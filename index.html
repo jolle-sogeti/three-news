@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>News Ready to Use</title>
+    <meta
+      name="description"
+      content="Web site demonstrating some new features for frontend developers"
+    />
+    <meta name="author" content="Jolle Carlestam" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+
+  <body class="pushable">
+    <div class="pusher">
+      <div class="ui container">
+        <div class="ui raised segment">
+          <sgt-header>
+            <sgt-link class="logo-wrapper" href="/"
+              ><img class="logo" src="/sogeti-logo.svg"
+            /></sgt-link>
+            <sgt-link href="/dialog">&lt;Dialog&gt;</sgt-link>
+            <sgt-link href="/layer">@Layer</sgt-link>
+            <sgt-link href="/filehandling">File System Access API</sgt-link>
+            <sgt-link href="/tidbits">Tidbits</sgt-link>
+            <sgt-link href="/finale">Finale</sgt-link>
+          </sgt-header>
+          <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+              <div class="row">
+                <div class="sixteen wide column">
+                  <sgt-route path="/">
+                    <sgt-start></sgt-start>
+                  </sgt-route>
+
+                  <sgt-route path="/dialog">
+                    <sgt-dialog-example></sgt-dialog-example>
+                  </sgt-route>
+                  <sgt-route path="/layer">
+                    <sgt-layerexample></sgt-layerexample>
+                  </sgt-route>
+                  <sgt-route path="/filehandling">
+                    <sgt-filehandling></sgt-filehandling>
+                  </sgt-route>
+                  <sgt-route path="/tidbits">
+                    <sgt-tidbitsexample></sgt-tidbitsexample>
+                  </sgt-route>
+                  <sgt-route path="/finale">
+                    <sgt-alldone></sgt-alldone>
+                  </sgt-route>
+                </div>
+              </div>
+            </div>
+          </div>
+          <sgt-footer></sgt-footer>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="dist_delivery/sgt-demo-iife.js"></script>
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+export default {
+  APIURL: "#{envAPIURL}#",
+  "CAMPAIGN-CODE": "#{envCAMPAIGNCODE}#",
+  GOOGLEMAPKEY: "#{envGOOGLEMAPKEY}#",
+  GOOGLETAGMANAGERKEY: "UA-4663340-1",
+  LANG: "#{envLANG}#",
+  LANGS: ["sv-SE", "en-GB", "fi-FI"],
+  METRIASUBKEY: "#{envMETRIASUBKEY}#",
+  METRIAURL: "#{envMETRIAURL}#",
+  "PARTNER-NAME": "#{envPARTNERNAME}#",
+  REDIRECTURL: "#{envREDIRECTURL}#",
+  SERVER: "#{envSERVER}#",
+  SUBKEY: "#{envSUBKEY}#",
+  VERSION: "_#_{GitVersion.SemVer}_#_",
+};
