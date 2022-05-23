@@ -10,12 +10,12 @@ class SgtAlldone extends SgtBaseElement {
     this.shadow = this.attachShadow({ mode: "open" });
     const template = document.createElement("template");
 
-    template.innerHTML = `<div class="ui text container">
-      <h2>Thanks!</h2>
+    template.innerHTML = `<div class="">
+      <h2>${t("THANKS")}</h2>
       <h3><a href="https://github.com/jolle-sogeti/three-news">https://github.com/jolle-sogeti/three-news</a></h3>
-      <p><strong><a mailto="jolle.carlestam@sogeti.se">jolle.carlestam@sogeti.se</a></p>
+      <p><strong><a mailto="jolle.carlestam@sogeti.se">jolle.carlestam@sogeti.se</a></strong></p>
       <div class="example-wrapper">
-<iframe width="1020" height="630" src="https://www.youtube.com/embed/7nqcL0mjMjw" title="Livin on the edge" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/7nqcL0mjMjw" title="Livin on the edge" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
     </div>
@@ -23,11 +23,25 @@ class SgtAlldone extends SgtBaseElement {
 `;
     const style = document.createElement("style");
     style.textContent = `
-    ${sgtStyles}
-  .example-wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
+${sgtStyles}
+.example-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+iframe {
+  border: none;
+  height: 63.0rem;
+  margin: 0;
+  padding: 0;
+  width: 102.0rem;
+}
+@media only screen and (max-width: 767px) {
+iframe {
+  height: calc((100vw - 2rem) * 0.75 );
+  width: calc(100vw - 2rem);
+}
+
+}
 `;
     this.shadow.appendChild(style);
     this.shadow.appendChild(template.content.cloneNode(true));

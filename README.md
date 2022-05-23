@@ -25,4 +25,4 @@ Search the internet if you don't know how to do that.
 
 You will also need to have Rollup running watch to serve the javascript file:
 
-rollup -c --watch --environment NODE_ENV=dev --dir dist_delivery
+`rollup -c --watch --environment NODE_ENV=dev --dir dist_delivery`

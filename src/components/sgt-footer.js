@@ -11,9 +11,15 @@ class SgtFooter extends SgtBaseElement {
     const template = document.createElement("template");
 
     template.innerHTML = `<div class="ui grid container">
-	<div class="left aligned six wide column"><a id="about-anchor">News Ready to Use</a></div>
-	<div class="center aligned four wide column"> <a id="license-anchor">License</a></div>
-	<div class="right aligned six wide column"> <a id="resources-anchor">Lunch presentation @Sogeti 2022-06-07</a></div>
+	<div class="left aligned six wide column"><a id="about-anchor">${t(
+    "ABOUT"
+  )}</a></div>
+	<div class="center aligned four wide column"> <a id="license-anchor">${t(
+    "LICENSE"
+  )}</a></div>
+	<div class="right aligned six wide column"> <a id="resources-anchor">${t(
+    "LINKS"
+  )}</a></div>
 </div>
 <style>
 a { cursor: pointer }
@@ -45,7 +51,7 @@ a { cursor: pointer }
     background: yellow;
 }
 </style>
-<dialog id="license-modal" allow-escape>
+<dialog id="license-modal">
 	<form method="dialog">
         <button class="close-x"></button>
 		<h3>License</h3>
@@ -77,29 +83,35 @@ a { cursor: pointer }
 	</form>
 </dialog>
 
-<dialog class="about-modal" id="about-modal" allow-escape>
+<dialog class="about-modal" id="about-modal">
 	<form method="dialog">
         <button class="close-x"></button>
-		<h3 class="modal-title">About</h3>
+		<h3 class="modal-title">${t("ABOUT")}</h3>
 		<article>
 
-			<h1>About the News Ready to Use site</h1>
+			<h1>${t("ABOUT-THE-NEWS-READY-TO-USE-SITE")}</h1>
 
-			<p>This site is all about experimenting and presenting demo cases about new features in a web browser. Features that are ready to use.</p>
+			<p>${t(
+        "THIS-SITE-IS-ALL-ABOUT-EXPERIMENTING-AND-PRESENTING-DEMO-CASES-ABOUT-NEW-FEATURES-IN-A-WEB-BROWSER-FEATURES-THAT-ARE-READY-TO-USE"
+      )}</p>
 
-			<p>It is probably under constant development and likely, for the most part, not stable.</p>
+			<p>${t(
+        "IT-IS-PROBABLY-UNDER-CONSTANT-DEVELOPMENT-AND-LIKELY-FOR-THE-MOST-PART-NOT-STABLE"
+      )}</p>
 
-			<p>Site and code is maintained by <strong><a mailto="jolle.carlestam@sogeti.se">Jolle Carlestam</a></strong> on his free time from all the fun work he does at <strong><a href="https://vattenfall.se">Vattenfall</a></strong>.</p>
+			<p>${t(
+        "SITE-AND-CODE-IS-MAINTAINED-BY-STRONG-A-MAILTO-JOLLE-CARLESTAM-SOGETI-SE-JOLLE-CARLESTAM-A-STRONG-ON-HIS-FREE-TIME-FROM-ALL-THE-FUN-WORK-HE-DOES-AT-STRONG-A-HREF-HTTPS-VATTENFALL-SE-VATTENFALL-A-STRONG"
+      )}</p>
 		</article>
 	</form>
 </dialog>
-<dialog class="recources-modal" id="recources-modal" allow-escape>
+<dialog class="recources-modal" id="recources-modal">
 	<form method="dialog">
         <button class="close-x"></button>
 		<h3 class="modal-title">Inspiration</h3>
 		<article>
 
-			<h1>Read more about the topics</h1>
+			<h1>${t("READ-MORE-ABOUT-THE-TOPICS")}</h1>
 
       <h2><a href="https://github.com/jolle-sogeti/three-news" target="_blank">https://github.com/jolle-sogeti/three-news</a></h2>
 
@@ -128,7 +140,7 @@ a { cursor: pointer }
         <li><a href="https://web.dev/file-system-access/" target="_blank">web.dev: The File System Access API: simplifying access to local files</a></li>
         <li><a href="https://bfy.tw/T6YL" target="_blank">Google -> File System Access API</a></li>
       </ul>
-      <h2>Of interest</h2
+      <h2>${t("OF-INTEREST")}</h2
       <ul>
         <li><a href="https://www.youtube.com/watch?v=5b4YcLB4DVI" target="_blank">Video: What's new for the web platform</a></li>
       </ul>
@@ -145,20 +157,42 @@ a { cursor: pointer }
 
     const style = document.createElement("style");
     style.textContent = `
-    ${sgtStyles}
-      .ui grid container {
-        padding-top: 1rem;
-      }
-      .vf.centered.grid.container {
-      background-color: unset !important;
-    }
-    a {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
-    dialog {
-      font-size: 1.5rem;
-    }
+${sgtStyles}
+.ui grid container {
+  padding-top: 1rem;
+}
+.vf.centered.grid.container {
+  background-color: unset !important;
+}
+a {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+dialog {
+  font-size: 1.5rem;
+}
+@media only screen and (max-width: 767px) {
+  .ui grid container {
+    padding-top: 0.5rem;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+  a {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  dialog {
+    font-size: 1rem;
+  }
+  #license-modal {
+    margin: auto 1.6rem;
+    font-size: 1rem;
+  }
+}
 `;
     shadowRoot.appendChild(style);
     shadowRoot.appendChild(template.content.cloneNode(true));

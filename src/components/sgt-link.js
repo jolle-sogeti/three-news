@@ -1,7 +1,7 @@
 import { SgtBaseElement } from "./sgt-base-element.js";
 import sgtStyles from "../styles.css";
 
-class Sgtlink extends SgtBaseElement {
+class SgtLink extends SgtBaseElement {
   get active() {
     return this.hasAttribute("active");
   }
@@ -24,36 +24,37 @@ class Sgtlink extends SgtBaseElement {
     this.shadow = this.attachShadow({ mode: "open" });
     this.template = document.createElement("template");
 
-    this.template.innerHTML = `<a href=""><slot /></a>`;
+    this.template.innerHTML = `<a href="" class="item"><slot /></a>`;
     const style = document.createElement("style");
 
     style.textContent = `
-    ${sgtStyles}
-			a {
-				background: 0 0;
-				box-shadow: none;
-				color: rgba(0,0,0,.87);
-				flex: 0 0 auto;
-        font-size: 1.5rem;
-				line-height: 1;
-				padding: .92857143em 1.14285714em;
-				position: relative;
-				text-decoration: none;
-				text-transform: none;
-				user-select: none;
-				vertical-align: middle;
-        border: none;
-        cursor: pointer;
-      }
-			a:hover {
-				filter: invert(25%);
-			}
-			a.active {
-				text-decoration: underline;
-				text-underline-position: under;
-				text-underline-offset: 0.3rem;
-			}
-		`;
+${sgtStyles}
+a {
+  background: 0 0;
+  box-shadow: none;
+  color: rgba(0,0,0,.87);
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  line-height: 2;
+  padding: .92857143em 1.14285714em;
+  position: relative;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  vertical-align: middle;
+  border: none;
+  cursor: pointer;
+}
+a:hover {
+  filter: invert(25%);
+}
+a.active {
+  text-decoration: underline;
+  text-underline-position: under;
+  text-underline-offset: 0.3rem;
+}
+
+`;
 
     this.shadow.appendChild(style);
   }
@@ -89,7 +90,8 @@ class Sgtlink extends SgtBaseElement {
     window.history.pushState({}, "", this.href);
     const navEvent = new PopStateEvent("popstate");
     window.dispatchEvent(navEvent);
+    document.body.classList.remove("dropdown-menu");
   };
 }
 
-export default Sgtlink;
+export default SgtLink;

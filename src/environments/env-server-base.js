@@ -4,7 +4,7 @@ export default {
   GOOGLEMAPKEY: "#{envGOOGLEMAPKEY}#",
   GOOGLETAGMANAGERKEY: "UA-4663340-1",
   LANG: "#{envLANG}#",
-  LANGS: ["sv-SE", "en-GB", "fi-FI"],
+  LANGS: ["sv-SE", "en-GB"],
   METRIASUBKEY: "#{envMETRIASUBKEY}#",
   METRIAURL: "#{envMETRIAURL}#",
   "PARTNER-NAME": "#{envPARTNERNAME}#",

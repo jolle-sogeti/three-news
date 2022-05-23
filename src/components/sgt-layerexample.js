@@ -30,7 +30,7 @@ import url(https://mysite/mycss.css) layer(defaults);
 
 @layer components {
   @charset "UTF-8";
-  
+
   .sgt-btn {
     background-color: transparent;
     border: 2px solid transparent;
@@ -48,23 +48,23 @@ import url(https://mysite/mycss.css) layer(defaults);
     user-select: none;
     vertical-align: middle;
   }
-  
+
   .sgt-btn__primary {
     color: #111111;
     background: #ffda00;
   }
-  
+
   .sgt-btn__secondary {
     color: #fff;
     background: #1964a3;
   }
-  
+
   .sgt-btn__tertiary {
     color: #222222;
     background: transparent;
     border: 2px #cdd1d4 solid;
   }
-  
+
 }
         </pre>
       </form>
@@ -73,12 +73,12 @@ import url(https://mysite/mycss.css) layer(defaults);
       <form type="dialog">
         <button class="close-x" value="cancel"></button>
         <div style="margin: 1.6rem">
-          <h3>Precedence</h3>
+          <h3>${t("PRECEDENCE")}</h3>
           <pre contenteditable>
 @layer defaults,components,overrides;
           </pre>
           <ul>
-            <li>no layer</li>
+            <li>${t("NO-LAYER")}</li>
             <li>overrides</li>
             <li>components</li>
             <li>defaults</li>
@@ -91,7 +91,7 @@ import url(https://mysite/mycss.css) layer(defaults);
       <form type="dialog">
         <button class="close-x" value="cancel"></button>
         <div style="margin: 1.6rem">
-          <h3>Precedence when using !important</h3>
+          <h3>${t("PRECEDENCE-WHEN-USING-IMPORTANT")}</h3>
           <pre contenteditable>
 @layer defaults,components,overrides;
           </pre>
@@ -99,8 +99,8 @@ import url(https://mysite/mycss.css) layer(defaults);
             <li class="red">defaults !important</li>
             <li class="red">components !important</li>
             <li class="red">overrides !important</li>
-            <li class="red">no layer !important</li>
-            <li>no layer</li>
+            <li class="red">${t("NO-LAYER")} !important</li>
+            <li>${t("NO-LAYER")}</li>
             <li>overrides</li>
             <li>components</li>
             <li>defaults</li>
@@ -109,43 +109,45 @@ import url(https://mysite/mycss.css) layer(defaults);
       </form>
     </dialog>
 
-    <div class="ui text container">
+    <div class="">
       <h2>@layer</h2>
-      <p>Layer your styles in the cascade, before specificity and order of appearance are considered.</p>
+      <p>${t(
+        "LAYER-YOUR-STYLES-IN-THE-CASCADE-BEFORE-SPECIFICITY-AND-ORDER-OF-APPEARANCE-ARE-CONSIDERED"
+      )}</p>
       <div class="example-wrapper">
         <div class="sgt-button__container">
           <button class="sgt-btn sgt-btn--lg sgt-btn__primary" id="btn-css-dialog">
-            CSS rules examples
+            ${t("CSS-RULES-EXAMPLES")}
           </button>
           <button type="button" class="sgt-btn sgt-btn--lg sgt-btn__secondary" id="btn-precedence-dialog">
-            Precedence
+            ${t("PRECEDENCE")}
           </button>
           <button type="button" class="sgt-btn sgt-btn--lg sgt-btn__tertiary" id="btn-important-dialog">
-            Tossing !important into the pot
+            ${t("TOSSING-IMPORTANT-INTO-THE-POT")}
           </button>
           <button
             type="button"
             class="sgt-btn sgt-btn--lg sgt-btn__tertiary disabled" id="btn-caniuse-dialog"
           >
-            Disabled
+            ${t("DISABLED")}
           </button>
         </div>
         <div class="sgt-button__container my-styles">
           <button type="button" class="sgt-btn sgt-btn--lg sgt-btn__primary">
-            &lt; &lt; &lt; Same as that one
+            &lt; &lt; &lt; ${t("SAME-AS-THAT-ONE")}
           </button>
           <button type="button" class="sgt-btn sgt-btn--lg sgt-btn__secondary">
-            &lt; &lt; &lt; Also the same
+            &lt; &lt; &lt; ${t("ALSO-THE-SAME")}
           </button>
           <button type="button" class="sgt-btn sgt-btn--lg sgt-btn__tertiary">
-            &lt; &lt; &lt; Me too
+            &lt; &lt; &lt; ${t("ME-TOO")}
           </button>
           <button
             type="button"
             disabled
             class="sgt-btn sgt-btn--lg sgt-btn__tertiary"
           >
-            Still Disabled
+            ${t("STILL-DISABLED")}
           </button>
         </div>
       </div>
@@ -155,25 +157,44 @@ import url(https://mysite/mycss.css) layer(defaults);
 `;
     const style = document.createElement("style");
     style.textContent = `
-    ${sgtStyles}
-    ${demoStyles}
-    .example-wrapper {
-      display: flex;
-      justify-content: space-around;
-    }
-    p {
-      font-size: 1.5rem;
-      line-height: 1.8rem;
-    }
-    ul {
-      list-style: nu;
-      font-size: 1.5rem;
-      line-height: 2rem;
-      font-weight: 600;
-    }
-    .red {
-      color: red;
-    }
+${sgtStyles}
+${demoStyles}
+.example-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+p {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+}
+ul {
+  list-style: nu;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+.red {
+  color: red;
+}
+
+@media only screen and (max-width: 767px) {
+  .example-wrapper {
+    flex-direction: column;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+  ul {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+  .sgt-btn--lg {
+    min-width: 180px;
+  }
+
+}
+
 `;
     this.shadow.appendChild(style);
     this.shadow.appendChild(template.content.cloneNode(true));

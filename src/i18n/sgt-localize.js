@@ -5,7 +5,7 @@ import enGB from "./en-GB.json";
 export class SgtLocalize {
   props = {
     activeLang: localStorage.getItem("sgt-activeLang") || ENV.LANG,
-    langs: ENV.langs || ["sv-SE", "en-GB", "fi-FI"],
+    langs: ENV.langs || ["sv-SE", "en-GB"],
   };
   constructor() {
     if (!window.__sgtLangStrings) {

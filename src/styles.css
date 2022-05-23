@@ -1,59 +1,65 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin");
-@import url('https://fonts.cdnfonts.com/css/menlo');
+@import url("https://fonts.cdnfonts.com/css/menlo");
 @import url("https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css");
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: sans-serif;
-    font-size: 1.4rem;
+  font-family: sans-serif;
+  font-size: 1.4rem;
 }
 
 .main.container {
-    margin-top: 7rem;
+  margin-top: 7rem;
 }
 
 dialog {
-    z-index: 1;
+  z-index: 1;
 }
 
 .styled-dialog {
-    background-color: #fff;
-    border: 1px solid gray;
-    border-radius: 10px;
-    box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
 }
 
 dialog form .close-x {
-    cursor: pointer;
-    position: absolute;
-    right: 6px;
-    top: 6px;
-    border-radius: 50%;
-    border: none;
-    padding: 4px 8px;
-    background-color: unset;
-    background-image: url(/assets/close-cross.png);
-    background-size: 20px 20px;
-    background-origin: border-box;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 30px;
-    height: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 4px 8px;
+  background-color: unset;
+  background-image: url(/assets/close-cross.png);
+  background-size: 20px 20px;
+  background-origin: border-box;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
 }
 
-.ui.grid>.column:not(.row),
-.ui.grid>.row>.column {
-    position: unset;
+.ui.grid > .column:not(.row),
+.ui.grid > .row > .column {
+  position: unset;
 }
 
-.ui.grid>.row {
-    position: unset;
+.ui.grid > .row {
+  position: unset;
 }
 
 pre {
-    font-size: 1.8rem;
-    line-height: initial;
+  font-size: 1.8rem;
+  line-height: initial;
+}
+@media only screen and (max-width: 767px) {
+  pre {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
 }

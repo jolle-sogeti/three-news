@@ -1,17 +1,78 @@
 .ui.container {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .logo-wrapper {
-	min-width: 8rem;
-	width: 8rem;
-	display: inline-block;
-	margin: 1.6rem;
+  display: inline-block;
+  margin: 1.6rem;
+  min-width: 8rem;
+  width: 8rem;
 }
 img.logo {
-	height: 3.5rem;
-	position: absolute;
-	top: -5px;
-	left: 0;
+  height: 3.5rem;
+  left: 0;
+  position: absolute;
+  top: 0.6rem;
 }
 
+.ui.menu {
+  -webkit-box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+  background: #fff;
+  border-radius: 0.28571429rem;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin: 1rem 0;
+  min-height: 2.85714286em;
+}
+
+.main.menu {
+  display: flex;
+  min-height: 2rem;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.secondary-menu {
+  font-size: 1.5rem;
+  margin-top: 0.6rem;
+  text-align: end;
+  width: 100%;
+}
+
+.right.menu {
+  display: flex;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.stackable.menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .main.menu {
+    background-color: white;
+    border: 1px solid grey;
+    display: none;
+    flex-direction: column;
+    min-height: 2rem;
+    padding: 0;
+    position: absolute;
+    width: 90%;
+    z-index: 1;
+  }
+  body.dropdown-menu .main.menu {
+    display: flex;
+  }
+  sgt-link {
+    border-bottom: 1px solid gray;
+  }
+}

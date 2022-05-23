@@ -1,38 +1,29 @@
-const template = document.createElement('template');
-template.innerHTML = `<div><slot></slot></div>
+import { SgtBaseElement } from "./sgt-base-element.js";
+import sgtStyles from "../styles.css";
+
+class SgtHeader extends SgtBaseElement {
+  constructor() {
+    super();
+
+    this.shadow = this.attachShadow({ mode: "open" });
+    this.template = document.createElement("template");
+
+    this.template.innerHTML = `<div class="ui menu"><slot></slot></div>
+`;
+    const style = document.createElement("style");
+
+    style.textContent = `
+    ${sgtStyles}
 `;
 
-customElements.define('sgt-header',
-	class extends HTMLElement {
+    this.shadow.appendChild(style);
+  }
 
-	constructor() {
-		super();
-		this.shadow = this.attachShadow({mode: 'open'});
+  connectedCallback() {
+    this.shadow.appendChild(this.template.content.cloneNode(true));
+  }
 
-		const style = document.createElement('style');
+  disconnectedCallback() {}
+}
 
-		style.textContent = `
-			div {
-				display: flex;
-				margin: 1rem 0;
-				font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-				font-weight: 400;
-				border: 1px solid rgba(34,36,38,.15);
-				box-shadow: none;
-				min-height: 2.85714286em;
-
-				margin-left: 0;
-				margin-right: 0;
-				border-radius: 0;
-				border: none;
-				border-bottom: 2px solid rgba(34,36,38,.15);
-			}
-		`;
-
-		this.shadow.appendChild(style);
-
-		this.shadow.appendChild(template.content.cloneNode(true));
-
-	}
-
-});
+export default SgtHeader;

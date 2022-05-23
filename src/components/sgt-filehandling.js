@@ -10,25 +10,29 @@ class SgtFilehandlingExample extends SgtBaseElement {
     this.shadow = this.attachShadow({ mode: "open" });
     const template = document.createElement("template");
 
-    template.innerHTML = `<div class="ui text container">
+    template.innerHTML = `<div class="">
       <h2>File System Access API</h2>
-      <p>The File System Access API provides a toolkit allowing us to access and manipulate files on the local drive.
+      <p>${t(
+        "THE-FILE-SYSTEM-ACCESS-API-PROVIDES-A-TOOLKIT-ALLOWING-US-TO-ACCESS-AND-MANIPULATE-FILES-ON-THE-LOCAL-DRIVE"
+      )}
       </p>
       <ul>
-        <li>[Create - Open - Edit - Save - Delete] files or directories</li>
-        <li>Requires secure context (HTTPS)</li>
-        <li>Requires a user gesture</li>
-        <li><a href="#" id="caniuse-link">Not as universal as I was hoping for</a></li>
+        <li>${t("CREATE-OPEN-EDIT-SAVE-DELETE-FILES-OR-DIRECTORIES")}</li>
+        <li>${t("REQUIRES-SECURE-CONTEXT")} (HTTPS)</li>
+        <li>${t("REQUIRES-A-USER-GESTURE")}</li>
+        <li><a href="#" id="caniuse-link">${t(
+          "NOT-AS-UNIVERSAL-AS-I-WAS-HOPING-FOR"
+        )}</a></li>
       </ul>
       <ul>
-        <li><a href="#" id="accessfile-link">Access a file</a></li>
-        <li><a href="#" id="accessimage-link">Access an image</a></li>
-        <li><a href="#" id="draganddrop-link">Drag and Drop</a></li>
+        <li><a href="#" id="accessfile-link">${t("ACCESS-A-FILE")}</a></li>
+        <li><a href="#" id="accessimage-link">${t("ACCESS-AN-IMAGE")}</a></li>
+        <li><a href="#" id="draganddrop-link">${t("DRAG-AND-DROP")}</a></li>
       </ul>
       <dialog id="accessfile-1">
         <form method="dialog">
           <button class="close-x"></button>
-          <h3>Access a file</h3>
+          <h3>${t("ACCESS-A-FILE")}</h3>
           <pre contenteditable>
 async getFile() {
   let handle;
@@ -41,12 +45,14 @@ async getFile() {
 }
           </pre>
         </form>
-        <button class="ui primary button" id="btn-pick-file">Try it</button>
+        <button class="ui primary button" id="btn-pick-file">${t(
+          "TRY-IT"
+        )}</button>
       </dialog>
       <dialog id="accessimage-1">
         <form method="dialog">
           <button class="close-x"></button>
-          <h3>Get an image file</h3>
+          <h3>${t("ACCESS-AN-IMAGE")}</h3>
           <p id="image-wrapper">
           </p>
           <pre contenteditable>
@@ -72,12 +78,14 @@ async getImageFile() {
 
           </pre>
         </form>
-        <button class="ui secondary button" id="btn-pick-image">Try it</button>
+        <button class="ui secondary button" id="btn-pick-image">${t(
+          "TRY-IT"
+        )}</button>
       </dialog>
       <dialog id="draganddrop-1">
         <form method="dialog">
           <button class="close-x"></button>
-          <h3>Drag and drop an image file here</h3>
+          <h3>${t("DRAG-AND-DROP-AN-IMAGE-FILE-HERE")}</h3>
           <p id="dd-image-wrapper">
           </p>
           <pre contenteditable>
@@ -112,25 +120,43 @@ this.dragAndDropDialog.addEventListener("drop", async (e) => {
 `;
     const style = document.createElement("style");
     style.textContent = `
-    ${sgtStyles}
-  img {
-    width: 460px;
-    display: block;
-    margin: 2rem;
+${sgtStyles}
+img {
+  display: block;
+  margin: 2rem;
+  max-width: calc(100vw - 2rem);
+  width: 460px;
+}
+}
+.file-hover {
+  background-color: yellow;
+}
+ul {
+  list-style: none;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+  p {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
   }
-  .file-hover {
-    background-color: yellow;
+@media only screen and (max-width: 767px) {
+  .example-wrapper {
+    flex-direction: column;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.4rem;
   }
   ul {
-    list-style: none;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4rem;
   }
-    p {
-      font-size: 1.5rem;
-      line-height: 1.8rem;
-    }
+  img {
+    margin: 0;
+  }
+}
 `;
 
     this.shadow.appendChild(style);

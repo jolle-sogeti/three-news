@@ -17,16 +17,18 @@ class SgtStart extends SgtBaseElement {
     <i class="filter icon"></i>
     <i class="keyboard icon"></i>
     <i class="terminal icon"></i>
+  </div>
+  <div>
     <h2>NEWS READY TO USE</h2>
-    <p>[Presented by Jolle Carlestam]</p>
+    <p>[${t("PRESENTED-BY-JOLLE-CARLESTAM")}]</p>
     <p class="talk-about">
-      <strong>Let's talk about</strong>
+      <strong>${t("LET-S-TALK-ABOUT")}</strong>
     </p>
     <ul>
       <li>&lt;dialog&gt;</li>
       <li>@Layer</li>
       <li>File System Access API</li>
-      <li>Tidbits (if time permits)</li>
+      <li>Tidbits (${t("IF-TIME-PERMITS")})</li>
     </ul>
     <p>[Brought to you by Daniel Granat - Applied Innovation Exchange]</p>
   </div>
@@ -44,41 +46,68 @@ class SgtStart extends SgtBaseElement {
     const style = document.createElement("style");
     style.textContent = `
     ${sgtStyles}
-      .ui.icon.header {
-        display: inline-block;
-        font-family: 'Menlo';
-        font-size: 1.5rem;
-        font-variant-caps: small-caps;
-        margin: 2rem auto;
-      }
-      .ui.icon.header .icon {
-        color: #0070ad;
-        display: inline-block;
-        margin: 0 2rem 0.5rem;
-      }
-      h2 {
-        margin: 2rem;
-      }
-      p.talk-about {
-        margin: 0;
-      }
-      ul {
-        text-align: left;
-        width: fit-content;
-        margin: 0 auto 2rem auto;
-        list-style-type: disclosure-closed;
-      }
-      #dotDowns {
-        width: 16px;
-        text-align: left;
-        display: inline-block;
-      }
-`;
+div {
+  display: inline-block;
+  font-family: 'Menlo';
+  font-size: 1.5rem;
+  font-variant-caps: small-caps;
+  margin: 2rem auto;
+  text-align: center;
+}
+.ui.icon.header .icon {
+  color: #0070ad;
+  display: inline-block;
+  margin: 0 2rem 0.5rem;
+}
+h2 {
+  font-family: 'Menlo';
+  margin: 2rem;
+}
+p.talk-about {
+  margin: 0;
+}
+ul {
+  text-align: left;
+  width: fit-content;
+  margin: 0 auto 2rem auto;
+  list-style-type: disclosure-closed;
+}
+#dotDowns {
+  width: 16px;
+  text-align: left;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.grid>.stackable.stackable.row>.column, .ui.stackable.grid>.column.grid>.column, 
+  .ui.stackable.grid>.column.row>.column, .ui.stackable.grid>.column:not(.row), 
+  .ui.stackable.grid>.row>.column, .ui.stackable.grid>.row>.wide.column, 
+  .ui.stackable.grid>.wide.column {
+    padding: 0 !important;
+  }
+
+  div {
+    font-size: 1.2rem;
+    margin: 0.5rem auto;
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin: 0.5rem;
+  }
+  .ui.icon.header {
+    display: none;
+  }
+
+}
+
+
+      `;
     this.shadow.appendChild(style);
     this.shadow.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
+    const t = this.translate;
     this.countDownDate = new Date("June 7, 2022 12:00:00").getTime();
     this.countDown = this.shadow.getElementById("countDown");
     this.dotDowns = this.shadow.getElementById("dotDowns");
@@ -95,15 +124,17 @@ class SgtStart extends SgtBaseElement {
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       const displayParts = [];
-      days > 0 ? displayParts.push(days + " Days ") : null;
-      hours > 0 ? displayParts.push(hours + " Hours ") : null;
-      minutes > 0 ? displayParts.push(minutes + " Minutes ") : null;
+      days > 0 ? displayParts.push(days + ` ${t("DAYS")} `) : null;
+      hours > 1 ? displayParts.push(hours + ` ${t("HOURS")} `) : null;
+      hours === 1 ? displayParts.push(hours + ` ${t("HOUR")} `) : null;
+      minutes > 1 ? displayParts.push(minutes + ` ${t("MINUTES")} `) : null;
+      minutes === 1 ? displayParts.push(minutes + ` ${t("MINUTE")} `) : null;
       this.countDown.innerHTML = displayParts.join("");
       this.dotDowns.innerHTML = ".".repeat(3 - (seconds % 3));
 
       if (distance < 0) {
         clearInterval(this.x);
-        this.countDown.innerHTML = "Start";
+        this.countDown.innerHTML = `${t("START")}`;
       }
     }, 1000);
   }
