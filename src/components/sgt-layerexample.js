@@ -111,7 +111,7 @@ import url(https://mysite/mycss.css) layer(defaults);
 
     <div class="ui text container">
       <h2>@layer</h2>
-      <p>Layer your styles in the cascade, before specificity and order of appearance are considered</p>
+      <p>Layer your styles in the cascade, before specificity and order of appearance are considered.</p>
       <div class="example-wrapper">
         <div class="sgt-button__container">
           <button class="sgt-btn sgt-btn--lg sgt-btn__primary" id="btn-css-dialog">
@@ -160,6 +160,10 @@ import url(https://mysite/mycss.css) layer(defaults);
     .example-wrapper {
       display: flex;
       justify-content: space-around;
+    }
+    p {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
     }
     ul {
       list-style: nu;

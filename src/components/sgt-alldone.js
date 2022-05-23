@@ -12,6 +12,8 @@ class SgtAlldone extends SgtBaseElement {
 
     template.innerHTML = `<div class="ui text container">
       <h2>Thanks!</h2>
+      <h3><a href="https://github.com/jolle-sogeti/three-news">https://github.com/jolle-sogeti/three-news</a></h3>
+      <p><strong><a mailto="jolle.carlestam@sogeti.se">jolle.carlestam@sogeti.se</a></p>
       <div class="example-wrapper">
 <iframe width="1020" height="630" src="https://www.youtube.com/embed/7nqcL0mjMjw" title="Livin on the edge" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>

@@ -12,7 +12,7 @@ class SgtFilehandlingExample extends SgtBaseElement {
 
     template.innerHTML = `<div class="ui text container">
       <h2>File System Access API</h2>
-      <p>The File System Access API provides a toolkit allowing us to access and manipulate files on the local drive. All protected by origin rights.
+      <p>The File System Access API provides a toolkit allowing us to access and manipulate files on the local drive.
       </p>
       <ul>
         <li>[Create - Open - Edit - Save - Delete] files or directories</li>
@@ -56,7 +56,7 @@ async getImageFile() {
       {
         description: "Images",
         accept: {
-          "image/*": [".png", ".gif", ".jpeg", ".jpg", "svg"],
+          "image/*": [".png", ".gif", ".jpeg", ".jpg", ".svg"],
         },
       },
     ],
@@ -127,6 +127,10 @@ this.dragAndDropDialog.addEventListener("drop", async (e) => {
     line-height: 2rem;
     font-weight: 600;
   }
+    p {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+    }
 `;
 
     this.shadow.appendChild(style);
@@ -218,7 +222,7 @@ this.dragAndDropDialog.addEventListener("drop", async (e) => {
         {
           description: "Images",
           accept: {
-            "image/*": [".png", ".gif", ".jpeg", ".jpg", "svg"],
+            "image/*": [".png", ".gif", ".jpeg", ".jpg", ".svg"],
           },
         },
       ],

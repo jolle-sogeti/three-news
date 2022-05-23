@@ -11,11 +11,10 @@ class SgtDialogExample extends SgtBaseElement {
     const template = document.createElement("template");
 
     template.innerHTML = `<div class="ui text container">
-      <h2>&lt;dialog&gt;</h2>
       <dialog id="plain-dialog">
         <h3>Aha, I'm in a dialog!</h3>
         <p>This dialog does nothing more than present some content.</p>
-        <pre contenteditable>
+        <pre id="pre-plain-dialog" contenteditable>
 &lt;dialog id="plain-dialog"&gt;
   &lt;h3&gt;Aha, I'm in a dialog!&lt;/h3&gt;
   &lt;p&gt;This dialog does nothing more than present some content.&lt;/p&gt;
@@ -23,6 +22,7 @@ class SgtDialogExample extends SgtBaseElement {
 
  this.plainDialog.show();
  this.plainDialog.showModal();
+ this.plainDialog.close();
         </pre>
       </dialog>
 
@@ -47,6 +47,7 @@ class SgtDialogExample extends SgtBaseElement {
 .styled-dialog {
   background-color: #fff;
   border: 1px solid gray;
+  border-radius: 10px;
   box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
 }
 &lt;/style&gt;
@@ -93,6 +94,11 @@ class SgtDialogExample extends SgtBaseElement {
         </pre>
       </dialog>
 
+      <h2>&lt;dialog&gt;</h2>
+      <p>
+        <a href="#" id="alert-anchor">Alert</a>
+        <a href="#" id="confirm-anchor">Confirm</a>
+      </p>
       <p>
         <button class="ui primary button" type="button" id="btn-plain-dialog">
           Open Dialog
@@ -131,21 +137,34 @@ class SgtDialogExample extends SgtBaseElement {
     }
     .values-wrapper {
       display: block;
+      font-size: 1.5rem;
       margin: 24px;
-      min-height: 64px;
+      min-height: 96px;
     }
-.m-fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 300ms;
-}
-.m-fadeIn {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 1300ms;
-}
+    .m-fadeOut {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s linear 300ms, opacity 300ms;
+    }
+    .m-fadeIn {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s linear 0s, opacity 1300ms;
+    }
 
+    a {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-right: 3rem;
+    }
+    form p, #form-dialog .label, #form-dialog input, #form-dialog select {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
 
+    .ui.form .field {
+      margin: 0 1rem 1rem;
+    }
 
     .fade-in-text {
       animation: fadeIn linear 5s;
@@ -190,6 +209,7 @@ class SgtDialogExample extends SgtBaseElement {
 
   connectedCallback() {
     this.plainDialog = this.shadow.getElementById("plain-dialog");
+    this.prePlainDialog = this.shadow.getElementById("pre-plain-dialog");
     this.styledDialog = this.shadow.getElementById("styled-dialog");
     this.formDialog = this.shadow.getElementById("form-dialog");
     this.dialogBtn = this.shadow.getElementById("btn-plain-dialog");
@@ -242,7 +262,9 @@ class SgtDialogExample extends SgtBaseElement {
         this.plainDialog.show();
       }
     });
-
+    this.prePlainDialog.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
     this.modalDialogBtn.addEventListener("click", () => {
       this.modalDialogBtn.innerText = "Close Modal Dialog";
       this.plainDialog.showModal();
@@ -264,6 +286,19 @@ class SgtDialogExample extends SgtBaseElement {
       .getElementById("btn-caniuse-dialog")
       .addEventListener("click", () => {
         window.open("https://caniuse.com/?search=%3Cdialog%3E");
+      });
+
+    this.shadow
+      .getElementById("alert-anchor")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        alert("I'm sorry Dave. I'm afraid you can't do that.");
+      });
+    this.shadow
+      .getElementById("confirm-anchor")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        confirm("Are you sure you want to choose the blue pil?");
       });
   }
 

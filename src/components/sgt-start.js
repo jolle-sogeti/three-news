@@ -18,16 +18,17 @@ class SgtStart extends SgtBaseElement {
     <i class="keyboard icon"></i>
     <i class="terminal icon"></i>
     <h2>NEWS READY TO USE</h2>
-    <p><strong>We'll talk about</strong><br />
+    <p>[Presented by Jolle Carlestam]</p>
+    <p class="talk-about">
+      <strong>Let's talk about</strong>
+    </p>
     <ul>
       <li>&lt;dialog&gt;</li>
       <li>@Layer</li>
       <li>File System Access API</li>
       <li>Tidbits (if time permits)</li>
     </ul>
-    </p>
-    <p>[Presented by Jolle Carlestam]</p>
-    <p>[Brought to you by Daniel Granat]</p>
+    <p>[Brought to you by Daniel Granat - Applied Innovation Exchange]</p>
   </div>
   <sgt-link href="/dialog"
     ><div class="ui primary button"><span id="countDown"></span><span id="dotDowns"></span></div></sgt-link
@@ -46,22 +47,26 @@ class SgtStart extends SgtBaseElement {
       .ui.icon.header {
         display: inline-block;
         font-family: 'Menlo';
+        font-size: 1.5rem;
+        font-variant-caps: small-caps;
         margin: 2rem auto;
-
       }
       .ui.icon.header .icon {
+        color: #0070ad;
         display: inline-block;
         margin: 0 2rem 0.5rem;
       }
       h2 {
         margin: 2rem;
       }
+      p.talk-about {
+        margin: 0;
+      }
       ul {
         text-align: left;
         width: fit-content;
-        margin: auto;
+        margin: 0 auto 2rem auto;
         list-style-type: disclosure-closed;
-
       }
       #dotDowns {
         width: 16px;

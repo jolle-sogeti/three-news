@@ -13,7 +13,7 @@ class SgtFooter extends SgtBaseElement {
     template.innerHTML = `<div class="ui grid container">
 	<div class="left aligned six wide column"><a id="about-anchor">News Ready to Use</a></div>
 	<div class="center aligned four wide column"> <a id="license-anchor">License</a></div>
-	<div class="right aligned six wide column">Lunch presentation @Sogeti 2022-06-07</div>
+	<div class="right aligned six wide column"> <a id="resources-anchor">Lunch presentation @Sogeti 2022-06-07</a></div>
 </div>
 <style>
 a { cursor: pointer }
@@ -48,7 +48,7 @@ a { cursor: pointer }
 <dialog id="license-modal" allow-escape>
 	<form method="dialog">
         <button class="close-x"></button>
-		<h3 slot="title">License</h3>
+		<h3>License</h3>
 		<article>
 
 			<h1>The MIT License (MIT)</h1>
@@ -80,7 +80,7 @@ a { cursor: pointer }
 <dialog class="about-modal" id="about-modal" allow-escape>
 	<form method="dialog">
         <button class="close-x"></button>
-		<h3 class="modal-title" slot="title">About</h3>
+		<h3 class="modal-title">About</h3>
 		<article>
 
 			<h1>About the News Ready to Use site</h1>
@@ -89,7 +89,50 @@ a { cursor: pointer }
 
 			<p>It is probably under constant development and likely, for the most part, not stable.</p>
 
-			<p>Site and code is maintained by <strong>Jolle Carlestam</strong> on his free time from all the fun work he does at <strong><a href="https://vattenfall.se">Vattenfall</a></strong>.</p>
+			<p>Site and code is maintained by <strong><a mailto="jolle.carlestam@sogeti.se">Jolle Carlestam</a></strong> on his free time from all the fun work he does at <strong><a href="https://vattenfall.se">Vattenfall</a></strong>.</p>
+		</article>
+	</form>
+</dialog>
+<dialog class="recources-modal" id="recources-modal" allow-escape>
+	<form method="dialog">
+        <button class="close-x"></button>
+		<h3 class="modal-title">Inspiration</h3>
+		<article>
+
+			<h1>Read more about the topics</h1>
+
+      <h2><a href="https://github.com/jolle-sogeti/three-news" target="_blank">https://github.com/jolle-sogeti/three-news</a></h2>
+
+      <h2>&lt;Dialog&gt;</h2
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank">MDN: The Dialog element</a></li>
+        <li><a href="https://css-tricks.com/some-hands-on-with-the-html-dialog-element/" target="_blank">CSS-TRICKS: Some Hands-On with the HTML Dialog Element</a></li>
+        <li><a href="https://webkit.org/blog/12209/introducing-the-dialog-element/" target="_blank">Webkit: Introducing the Dialog Element</a></li>
+        <li><a href="https://github.com/GoogleChrome/dialog-polyfill" target="_blank">A Dialog polyfill</a></li>
+      </ul>
+
+      <h2>@Layer</h2
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer" target="_blank">MDN: @layer</a></li>
+        <li><a href="https://css-tricks.com/css-cascade-layers/" target="_blank">CSS-TRICKS: A Complete Guide to CSS Cascade Layers</a></li>
+        <li><a href="" target="_blank">Subject</a></li>
+        <li><a href="https://codepen.io/miriamsuzanne/pen/poweapY" target="_blank">OMG: Layers</a></li>
+      </ul>
+
+      <h2>File System Access API</h2
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API" target="_blank">MDN: File System Access API</a></li>
+        <li><a href="https://wicg.github.io/file-system-access/" target="_blank">WC3: File System Access</a></li>
+        <li><a href="https://webkit.org/blog/12257/the-file-system-access-api-with-origin-private-file-system/" target="_blank">Webkit: The File System Access API with Origin Private File System</a></li>
+        <li><a href="https://css-tricks.com/getting-started-with-the-file-system-access-api/" target="_blank">CSS-TRICKS: Getting Started With the File System Access API</a></li>
+        <li><a href="https://web.dev/file-system-access/" target="_blank">web.dev: The File System Access API: simplifying access to local files</a></li>
+        <li><a href="https://bfy.tw/T6YL" target="_blank">Google -> File System Access API</a></li>
+      </ul>
+      <h2>Of interest</h2
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=5b4YcLB4DVI" target="_blank">Video: What's new for the web platform</a></li>
+      </ul>
+
 		</article>
 	</form>
 </dialog>
@@ -122,8 +165,10 @@ a { cursor: pointer }
 
     this.aboutDialog = shadowRoot.getElementById("about-modal");
     this.licenceDialog = shadowRoot.getElementById("license-modal");
+    this.resourcesDialog = shadowRoot.getElementById("recources-modal");
     this.aboutDialogAnchor = shadowRoot.getElementById("about-anchor");
     this.licenceDialogAnchor = shadowRoot.getElementById("license-anchor");
+    this.resourcesDialogAnchor = shadowRoot.getElementById("resources-anchor");
     this.aboutDialogAnchor.addEventListener("click", () => {
       if (this.aboutDialog.hasAttribute("open")) {
         this.aboutDialog.close();
@@ -136,6 +181,13 @@ a { cursor: pointer }
         this.licenceDialog.close();
       } else {
         this.licenceDialog.showModal();
+      }
+    });
+    this.resourcesDialogAnchor.addEventListener("click", () => {
+      if (this.resourcesDialog.hasAttribute("open")) {
+        this.resourcesDialog.close();
+      } else {
+        this.resourcesDialog.showModal();
       }
     });
   }

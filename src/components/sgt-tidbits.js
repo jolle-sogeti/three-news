@@ -22,7 +22,7 @@ class SgtTidbitsExample extends SgtBaseElement {
         <ul>
           <li><a href="#" id="arrayat-link">Array.at()</a></li>
           <li><a href="#" id="lazyload-link">Lazy loading images</a> <a href="#" id="regularload-link">(Regular load of images)</a></li>
-          <li><a href="#" id="datetimelocal-link">datetime-local</a></li>
+          <li><a href="#" id="datetimelocal-link">datetime-local</a> <output></output></li>
         </ul>
       <div>
         <button class="ui primary button" type="button" id="btn-more">
@@ -30,16 +30,16 @@ class SgtTidbitsExample extends SgtBaseElement {
         </button>
       </div>
       </div>
-      <dialog id="datetimelocal-1">
-        <form method="dialog">
+      <dialog id="datetimelocal">
+        <form method="dialog" id="date-form">
           <button class="close-x"></button>
           <h3>Let user select date and time</h3>
-          <p><input type="datetime-local" id="meeting-time"
-       name="meeting-time" value="2022-05-13T19:30"
+          <p><input type="datetime-local" id="date-time"
+       name="date-time" value="2022-05-13T19:30"
        min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}"></p>
           <pre id="datetime-pre">
           </pre>
-          <button class="ui secondary button">Done</button>
+          <button class="ui secondary button" value="submit">Done</button>
         </form>
       </dialog>
       <dialog id="lazyloading-1">
@@ -66,7 +66,7 @@ class SgtTidbitsExample extends SgtBaseElement {
           <button class="ui secondary button">I see!</button>
         </form>
       </dialog>
-      <dialog id="arrayat-1">
+      <dialog id="arrayat">
         <form method="dialog">
           <button class="close-x"></button>
           <h3>Array.at()</h3>
@@ -106,6 +106,10 @@ myArray.at(-1);
     padding: 1rem;
     font-size: 1.4rem;
   }
+  a, output {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 `;
     this.shadow.appendChild(style);
     this.shadow.appendChild(template.content.cloneNode(true));
@@ -128,7 +132,7 @@ myArray.at(-1);
       .getElementById("arrayat-link")
       .addEventListener("click", (event) => {
         event.preventDefault();
-        this.shadow.getElementById("arrayat-1").showModal();
+        this.shadow.getElementById("arrayat").showModal();
       });
     this.shadow
       .getElementById("datetimelocal-link")
@@ -139,12 +143,29 @@ myArray.at(-1);
         let [pdate, ptime] = this.formatDate(this.pastDate).split(" ");
         this.shadow.getElementById(
           "datetime-pre"
-        ).innerText = `<input type="datetime-local" id="meeting-time"
-name="meeting-time" value="${date + "T" + time}"
-min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}" />;
+        ).innerText = `<input type="datetime-local" id="date-time"
+name="date-time" value="${date + "T" + time}"
+min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}" />
 `;
-        this.shadow.getElementById("meeting-time").value = date + "T" + time;
-        this.shadow.getElementById("datetimelocal-1").showModal();
+        this.shadow.getElementById("date-time").value = date + "T" + time;
+        console.log("here");
+        const dateTimeDialog = this.shadow.getElementById("datetimelocal");
+        dateTimeDialog.showModal();
+        dateTimeDialog.addEventListener("close", () => {
+          if (dateTimeDialog.returnValue === "submit") {
+            const form = this.shadow.getElementById("date-form");
+            this.shadow.querySelector(
+              "output"
+            ).innerHTML = ` &gt; &gt; &gt; ${JSON.stringify(
+              Object.values(form).reduce((obj, field) => {
+                if (field.name) {
+                  obj[field.name] = field.value;
+                }
+                return obj;
+              }, {})
+            )}`;
+          }
+        });
       });
     this.moreBtn = this.shadow.getElementById("btn-more");
     this.moreBtn.addEventListener("click", () => {
