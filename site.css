@@ -51,6 +51,10 @@ img.logo {
   margin-left: auto;
 }
 
+a.toggle-menu {
+  display: none;
+}
+
 @media only screen and (max-width: 767px) {
   .ui.stackable.menu {
     -webkit-box-orient: vertical;
@@ -69,6 +73,10 @@ img.logo {
     width: 90%;
     z-index: 1;
   }
+  a.toggle-menu {
+    display: inline-block;
+  }
+
   body.dropdown-menu .main.menu {
     display: flex;
   }

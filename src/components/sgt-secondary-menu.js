@@ -12,14 +12,13 @@ class SgtSecondaryMenu extends SgtBaseElement {
 
     template.innerHTML = `
 <div class="right menu">
-  <a href="#" class="ui item" id="toggle-menu">
+  <a href="#" class="ui item toggle-menu" id="toggle-menu">
     <i class="bars icon"></i>
   </a>
    <a href="#" id="toggle-lang">
     <i class="globe icon"></i>
   </a>
 </div>
-   
 `;
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -36,6 +35,14 @@ ${sgtStyles}
 a {
   display: inline-block;
   text-align: right;
+}
+a.toggle-menu {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  a.toggle-menu {
+    display: inline-block;
+  }
 }
 `;
     this.shadow.appendChild(style);
