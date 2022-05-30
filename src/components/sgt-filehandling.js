@@ -73,7 +73,7 @@ async getImageFile() {
   [handle] = await window.showOpenFilePicker(options);
 
   const file = await handle.getFile();
-  this.preppingImage(file, this.shadow.getElementById("image-wrapper"));
+  this.preppingImage(file, document.getElementById("image-wrapper"));
 }
 
           </pre>
@@ -89,14 +89,14 @@ async getImageFile() {
           <p id="dd-image-wrapper">
           </p>
           <pre contenteditable>
-this.dragAndDropDialog.addEventListener("dragover", (e) => {
+dragAndDropDialog.addEventListener("dragover", (e) => {
   e.preventDefault();
-  this.dragAndDropDialog.classList.add("file-hover");
+  dragAndDropDialog.classList.add("file-hover");
 });
 
-this.dragAndDropDialog.addEventListener("drop", async (e) => {
+dragAndDropDialog.addEventListener("drop", async (e) => {
   e.preventDefault();
-  this.dragAndDropDialog.classList.remove("file-hover");
+  dragAndDropDialog.classList.remove("file-hover");
 
   const fileHandlesPromises = [...e.dataTransfer.items]
     .filter((item) => item.kind === "file")
@@ -105,9 +105,9 @@ this.dragAndDropDialog.addEventListener("drop", async (e) => {
   for await (const handle of fileHandlesPromises) {
     if (handle.kind === "file") {
       const file = await handle.getFile();
-      this.preppingImage(
+      preppingImage(
         file,
-        this.shadow.getElementById("dd-image-wrapper")
+        document.getElementById("dd-image-wrapper")
       );
     }
   }

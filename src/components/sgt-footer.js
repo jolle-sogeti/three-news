@@ -30,8 +30,6 @@ a { cursor: pointer }
 	background-color: rgba(77, 182, 133, 0.75);
 	font-family: Times;
 	font-size: 1.4rem;
-	--modal-background-color: #8ebfd6;
-	--modal-button-container-text-align: center;
 }
 #license-modal::backdrop {
     background-color: rgb(0 128 0 / 30%);
@@ -120,6 +118,7 @@ a { cursor: pointer }
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank">MDN: The Dialog element</a></li>
         <li><a href="https://css-tricks.com/some-hands-on-with-the-html-dialog-element/" target="_blank">CSS-TRICKS: Some Hands-On with the HTML Dialog Element</a></li>
         <li><a href="https://webkit.org/blog/12209/introducing-the-dialog-element/" target="_blank">Webkit: Introducing the Dialog Element</a></li>
+        <li><a href="https://css-tricks.com/replace-javascript-dialogs-html-dialog-element/" target="_blank">Replace JavaScript Dialogs With the New HTML Dialog Element</a></li>
         <li><a href="https://github.com/GoogleChrome/dialog-polyfill" target="_blank">A Dialog polyfill</a></li>
       </ul>
 

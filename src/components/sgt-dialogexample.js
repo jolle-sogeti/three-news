@@ -12,7 +12,7 @@ class SgtDialogExample extends SgtBaseElement {
     this.shadow = this.attachShadow({ mode: "open" });
     const template = document.createElement("template");
 
-    template.innerHTML = `<div class="">
+    template.innerHTML = `<div>
       <dialog id="plain-dialog">
         <h3>${t("AHA-I-M-IN-A-DIALOG")}</h3>
         <p>${t("THIS-DIALOG-DOES-NOTHING-MORE-THAN-PRESENT-SOME-CONTENT")}</p>
@@ -24,9 +24,10 @@ class SgtDialogExample extends SgtBaseElement {
   )}&lt;/p&gt;
 &lt;/dialog&gt;
 
- this.plainDialog.show();
- this.plainDialog.showModal();
- this.plainDialog.close();
+const plainDialog = document.getElementById("plain-dialog");
+plainDialog.show();
+plainDialog.showModal();
+plainDialog.close();
         </pre>
       </dialog>
 
@@ -77,7 +78,7 @@ class SgtDialogExample extends SgtBaseElement {
               <select name="${t("FAVORITE-DEVELOPER")}">
                 <option value="">${t("CHOOSE-YOUR-FAVORITE")}...</option>
                 <option value="Jolle">Kevin</option>
-                <option value="Jolle">Sporthy</option>
+                <option value="Jolle">Evelina</option>
                 <option value="Jolle">Staffan</option>
                 <option value="Matilda">Matilda</option>
               </select>
@@ -96,12 +97,8 @@ class SgtDialogExample extends SgtBaseElement {
           </div>
         </form>
         <div class="values-wrapper">
-          <values class=""></values>
+          <values></values>
         </div>
-
-        <pre contenteditable>
-
-        </pre>
       </dialog>
 
       <h2>&lt;dialog&gt;</h2>
@@ -122,15 +119,15 @@ class SgtDialogExample extends SgtBaseElement {
         <button class="ui primary button" type="button" id="btn-form-dialog">
           ${t("OPEN-FORM-DIALOG")}
         </button>
-          <button
-            type="button"
-            class="ui secondary button" id="btn-caniuse-dialog"
-          >
-            ?
-          </button>
+        <button
+          type="button"
+          class="ui secondary button" id="btn-caniuse-dialog"
+        >
+          ?
+        </button>
       </div>
       <p>
-      <output></output>
+        <output></output>
       </p>
     </div>
 
@@ -155,6 +152,7 @@ ${sgtStyles}
   display: flex;
   flex-direction: row;
   grid-gap: 8px;
+  margin-bottom: 2rem;
 }
 .m-fadeOut {
   visibility: hidden;
@@ -301,6 +299,7 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
       const form = this.shadow.getElementById("dialog-form");
       form.addEventListener("change", () => this.serializeForm(form));
       this.formDialogBtn.innerText = t("CLOSE-FORM-DIALOG");
+      this.outputBox.innerHTML = "";
       this.formDialog.showModal();
     });
 
