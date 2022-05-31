@@ -30,7 +30,7 @@ class SgtStart extends SgtBaseElement {
       <li>File System Access API</li>
       <li>Tidbits (${t("IF-TIME-PERMITS")})</li>
     </ul>
-    <p>[Brought to you by Daniel Granat - Applied Innovation Exchange]</p>
+    <p>[${t("TECH-TALK-IS-EVENT-SERIES-MALMO-APPLIED-INNOVATION-EXCHANGE")}]</p>
   </div>
   <sgt-link href="/dialog"
     ><div class="ui primary button"><span id="countDown"></span><span id="dotDowns"></span></div></sgt-link
@@ -79,9 +79,9 @@ ul {
 }
 
 @media only screen and (max-width: 767px) {
-  .ui.grid>.stackable.stackable.row>.column, .ui.stackable.grid>.column.grid>.column, 
-  .ui.stackable.grid>.column.row>.column, .ui.stackable.grid>.column:not(.row), 
-  .ui.stackable.grid>.row>.column, .ui.stackable.grid>.row>.wide.column, 
+  .ui.grid>.stackable.stackable.row>.column, .ui.stackable.grid>.column.grid>.column,
+  .ui.stackable.grid>.column.row>.column, .ui.stackable.grid>.column:not(.row),
+  .ui.stackable.grid>.row>.column, .ui.stackable.grid>.row>.wide.column,
   .ui.stackable.grid>.wide.column {
     padding: 0 !important;
   }

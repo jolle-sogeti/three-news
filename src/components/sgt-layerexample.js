@@ -111,9 +111,7 @@ import url(https://mysite/mycss.css) layer(defaults);
 
     <div class="">
       <h2>@layer</h2>
-      <p>${t(
-        "LAYER-YOUR-STYLES-IN-THE-CASCADE-BEFORE-SPECIFICITY-AND-ORDER-OF-APPEARANCE-ARE-CONSIDERED"
-      )}</p>
+      <p>${t("LAYER-YOUR-STYLES-TXT")}</p>
       <div class="example-wrapper">
         <div class="sgt-button__container">
           <button class="sgt-btn sgt-btn--lg sgt-btn__primary" id="btn-css-dialog">

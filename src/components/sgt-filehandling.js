@@ -12,9 +12,7 @@ class SgtFilehandlingExample extends SgtBaseElement {
 
     template.innerHTML = `<div class="">
       <h2>File System Access API</h2>
-      <p>${t(
-        "THE-FILE-SYSTEM-ACCESS-API-PROVIDES-A-TOOLKIT-ALLOWING-US-TO-ACCESS-AND-MANIPULATE-FILES-ON-THE-LOCAL-DRIVE"
-      )}
+      <p>${t("FILE-SYSTEM-ACCESS-API-TOOLKIT-TXT")}
       </p>
       <ul>
         <li>${t("CREATE-OPEN-EDIT-SAVE-DELETE-FILES-OR-DIRECTORIES")}</li>

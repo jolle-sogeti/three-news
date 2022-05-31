@@ -15,13 +15,11 @@ class SgtDialogExample extends SgtBaseElement {
     template.innerHTML = `<div>
       <dialog id="plain-dialog">
         <h3>${t("AHA-I-M-IN-A-DIALOG")}</h3>
-        <p>${t("THIS-DIALOG-DOES-NOTHING-MORE-THAN-PRESENT-SOME-CONTENT")}</p>
+        <p>${t("THIS-DIALOG-TXT")}</p>
         <pre id="pre-plain-dialog" contenteditable>
 &lt;dialog id="plain-dialog"&gt;
   &lt;h3&gt;${t("AHA-I-M-IN-A-DIALOG")}&lt;/h3&gt;
-  &lt;p&gt;${t(
-    "THIS-DIALOG-DOES-NOTHING-MORE-THAN-PRESENT-SOME-CONTENT"
-  )}&lt;/p&gt;
+  &lt;p&gt;${t("THIS-DIALOG-TXT")}&lt;/p&gt;
 &lt;/dialog&gt;
 
 const plainDialog = document.getElementById("plain-dialog");
@@ -35,7 +33,7 @@ plainDialog.close();
         <form method="dialog">
           <button class="close-x"></button>
           <h3>${t("OH-SOMEONE-STYLED-ME")}</h3>
-          <p>${t("IT-IS-VERY-EASY-TO-ADD-STYLES-TO-YOUR-DIALOGS")}</p>
+          <p>${t("STYLES-DIALOGS-TXT")}</p>
           <button class="ui secondary button">${t("I-SEE")}</button>
         </form>
 <pre contenteditable>
@@ -43,7 +41,7 @@ plainDialog.close();
   &lt;form method="dialog"&gt;
     &lt;button class="close-x"&gt;&lt;/button&gt;
     &lt;h3&gt;${t("OH-SOMEONE-STYLED-ME")}&lt;/h3&gt;
-    &lt;p&gt;${t("IT-IS-VERY-EASY-TO-ADD-STYLES-TO-YOUR-DIALOGS")}&lt;/p&gt;
+    &lt;p&gt;${t("STYLES-DIALOGS-TXT")}&lt;/p&gt;
     &lt;button class="ui secondary button"&gt;${t("I-SEE")}&lt;/button&gt;
   &lt;/form&gt;
 &lt;/dialog&gt;
@@ -63,7 +61,7 @@ plainDialog.close();
         <form method="dialog" id="dialog-form" class="ui fluid form">
           <button class="close-x" value="cancel"></button>
           <h3>${t("HERE-BE-A-FORM")}</h3>
-          <p>${t("THE-DIALOG-CAN-ALSO-HANDLE-FORM-SUBMISSIONS")}</p>
+          <p>${t("DIALOG-FORM-SUB-TXT")}</p>
           <p>
             <div class="field">
               <input type="text" name="Organisation" placeholder="${t(
@@ -319,7 +317,7 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
       .getElementById("confirm-anchor")
       .addEventListener("click", (event) => {
         event.preventDefault();
-        confirm(t("ARE-YOU-SURE-YOU-WANT-TO-CHOOSE-THE-BLUE-PIL"));
+        confirm(t("CHOOSE-BLUE-PIL-TXT"));
       });
   }
 
