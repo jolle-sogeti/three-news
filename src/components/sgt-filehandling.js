@@ -123,7 +123,7 @@ img {
   display: block;
   margin: 2rem;
   max-width: calc(100vw - 2rem);
-  width: 460px;
+  width: 46rem;
 }
 }
 .file-hover {

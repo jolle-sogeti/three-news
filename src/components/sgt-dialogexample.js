@@ -137,20 +137,20 @@ ${sgtStyles}
   display: none;
 }
 .ui.form {
-  max-width: calc(100% - 24px);
+  max-width: calc(100% - 2.4rem);
   position: unset;
 }
 .values-wrapper {
   display: block;
   font-size: 1.5rem;
-  margin: 24px;
-  min-height: 96px;
+  margin: 2.4rem;
+  min-height: 9.6rem;
 }
 .btn-wrapper {
   display: flex;
   flex-direction: row;
-  grid-gap: 8px;
-  margin-bottom: 2rem;
+  grid-gap: 0.8rem;
+  margin-bottom: 0.2rem;
 }
 .m-fadeOut {
   visibility: hidden;

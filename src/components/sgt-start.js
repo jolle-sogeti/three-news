@@ -73,9 +73,13 @@ ul {
   list-style-type: disclosure-closed;
 }
 #dotDowns {
-  width: 16px;
+  width: 1.6rem;
   text-align: left;
   display: inline-block;
+}
+
+.ui.placeholder.segment .button, .ui.placeholder.segment .field, .ui.placeholder.segment textarea, .ui.placeholder.segment>.ui.input {
+    max-width: 22rem;
 }
 
 @media only screen and (max-width: 767px) {

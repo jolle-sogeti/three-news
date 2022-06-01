@@ -39,9 +39,9 @@ import url(https://mysite/mycss.css) layer(defaults);
     display: inline-block;
     font-size: 0.875rem;
     font-weight: 500;
-    line-height: 18px;
-    min-width: 180px;
-    padding: 9px 48px;
+    line-height: 1.8rem;
+    min-width: 18rem;
+    padding: 0.9rem 4.8rem;
     position: relative;
     text-align: center;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -188,7 +188,7 @@ ul {
     line-height: 1.4rem;
   }
   .sgt-btn--lg {
-    min-width: 180px;
+    min-width: 18rem;
   }
 
 }
