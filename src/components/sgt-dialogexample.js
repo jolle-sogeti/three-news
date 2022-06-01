@@ -321,8 +321,6 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
       });
   }
 
-  disconnectedCallback() {}
-
   serializeForm(form) {
     this.valuesBox.classList.remove("m-fadeIn");
     this.valuesBox.classList.add("m-fadeOut");

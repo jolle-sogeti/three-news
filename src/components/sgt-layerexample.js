@@ -15,9 +15,7 @@ class SgtLayerExample extends SgtBaseElement {
     <dialog id="css-dialog">
       <form type="dialog">
         <button class="close-x" value="cancel"></button>
-        <pre contenteditable>
-
-@layer defaults,components,overrides;
+        <pre contenteditable>@layer defaults,components,overrides;
 
 import url(https://mysite/mycss.css) layer(defaults);
 
@@ -66,7 +64,7 @@ import url(https://mysite/mycss.css) layer(defaults);
   }
 
 }
-        </pre>
+</pre>
       </form>
     </dialog>
     <dialog id="precedence-dialog">
@@ -74,9 +72,8 @@ import url(https://mysite/mycss.css) layer(defaults);
         <button class="close-x" value="cancel"></button>
         <div style="margin: 1.6rem">
           <h3>${t("PRECEDENCE")}</h3>
-          <pre contenteditable>
-@layer defaults,components,overrides;
-          </pre>
+          <pre contenteditable>@layer defaults,components,overrides;
+</pre>
           <ul>
             <li>${t("NO-LAYER")}</li>
             <li>overrides</li>
@@ -92,9 +89,8 @@ import url(https://mysite/mycss.css) layer(defaults);
         <button class="close-x" value="cancel"></button>
         <div style="margin: 1.6rem">
           <h3>${t("PRECEDENCE-WHEN-USING-IMPORTANT")}</h3>
-          <pre contenteditable>
-@layer defaults,components,overrides;
-          </pre>
+          <pre contenteditable>@layer defaults,components,overrides;
+</pre>
           <ul>
             <li class="red">defaults !important</li>
             <li class="red">components !important</li>
@@ -245,8 +241,6 @@ ul {
         this.importantDialog.close();
       });
   }
-
-  disconnectedCallback() {}
 }
 
 export default SgtLayerExample;

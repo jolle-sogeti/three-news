@@ -65,7 +65,6 @@ a.toggle-menu {
       window.location.reload(true);
     });
   }
-  disconnectedCallback() {}
 }
 
 export default SgtSecondaryMenu;

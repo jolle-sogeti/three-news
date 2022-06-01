@@ -22,8 +22,6 @@ class SgtHeader extends SgtBaseElement {
   connectedCallback() {
     this.shadow.appendChild(this.template.content.cloneNode(true));
   }
-
-  disconnectedCallback() {}
 }
 
 export default SgtHeader;

@@ -31,8 +31,7 @@ class SgtFilehandlingExample extends SgtBaseElement {
         <form method="dialog">
           <button class="close-x"></button>
           <h3>${t("ACCESS-A-FILE")}</h3>
-          <pre contenteditable>
-async getFile() {
+          <pre contenteditable>async getFile() {
   let handle;
   [handle] = await window.showOpenFilePicker();
 
@@ -41,7 +40,7 @@ async getFile() {
 
   console.log(content);
 }
-          </pre>
+</pre>
         </form>
         <button class="ui primary button" id="btn-pick-file">${t(
           "TRY-IT"
@@ -53,8 +52,7 @@ async getFile() {
           <h3>${t("ACCESS-AN-IMAGE")}</h3>
           <p id="image-wrapper">
           </p>
-          <pre contenteditable>
-async getImageFile() {
+          <pre contenteditable>async getImageFile() {
   const options = {
     types: [
       {
@@ -73,8 +71,7 @@ async getImageFile() {
   const file = await handle.getFile();
   this.preppingImage(file, document.getElementById("image-wrapper"));
 }
-
-          </pre>
+</pre>
         </form>
         <button class="ui secondary button" id="btn-pick-image">${t(
           "TRY-IT"
@@ -86,8 +83,7 @@ async getImageFile() {
           <h3>${t("DRAG-AND-DROP-AN-IMAGE-FILE-HERE")}</h3>
           <p id="dd-image-wrapper">
           </p>
-          <pre contenteditable>
-dragAndDropDialog.addEventListener("dragover", (e) => {
+          <pre contenteditable>dragAndDropDialog.addEventListener("dragover", (e) => {
   e.preventDefault();
   dragAndDropDialog.classList.add("file-hover");
 });
@@ -110,7 +106,7 @@ dragAndDropDialog.addEventListener("drop", async (e) => {
     }
   }
 });
-          </pre>
+</pre>
         </form>
       </dialog>
     </div>
@@ -229,8 +225,6 @@ ul {
     });
   }
 
-  disconnectedCallback() {}
-
   async getFile() {
     let handle;
     [handle] = await window.showOpenFilePicker();
@@ -274,16 +268,16 @@ ul {
   }
 
   encode(input) {
-    var keyStr =
+    const keyStr =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-    var output = "";
-    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-    var i = 0;
+    const output = "";
+    let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    let i = 0;
 
     while (i < input.length) {
       chr1 = input[i++];
-      chr2 = i < input.length ? input[i++] : Number.NaN; // Not sure if the index
-      chr3 = i < input.length ? input[i++] : Number.NaN; // checks are needed here
+      chr2 = i < input.length ? input[i++] : Number.NaN;
+      chr3 = i < input.length ? input[i++] : Number.NaN;
 
       enc1 = chr1 >> 2;
       enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);

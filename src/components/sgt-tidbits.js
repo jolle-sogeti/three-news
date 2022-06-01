@@ -195,8 +195,6 @@ min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}" />
     });
   }
 
-  disconnectedCallback() {}
-
   formatDate(date) {
     return (
       [
@@ -217,7 +215,6 @@ min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}" />
   }
 
   randomIntFromInterval(min, max) {
-    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
@@ -269,7 +266,6 @@ min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}" />
     futureBits.forEach((bit) => {
       (async () => {
         await this.sleep(500, i++);
-        //Do some stuff
         let left = this.randomIntFromInterval(1, windowWidth);
         let top = this.randomIntFromInterval(1, windowHeight);
         if (left > windowWidth - 370) {
@@ -285,11 +281,8 @@ min="${pdate + "T" + ptime}" max="${fdate + "T" + ftime}" />
           colors[Math.floor(Math.random() * colors.length)];
         bitElement.style.left = left + "px";
         bitElement.style.top = top + "px";
-        let width = bitElement.offsetWidth;
-        let height = bitElement.offsetHeight;
 
         this.shadow.appendChild(bitElement);
-        //Do some more stuff
       })();
     });
   }

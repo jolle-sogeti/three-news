@@ -46,10 +46,6 @@ iframe {
     this.shadow.appendChild(style);
     this.shadow.appendChild(template.content.cloneNode(true));
   }
-
-  connectedCallback() {}
-
-  disconnectedCallback() {}
 }
 
 export default SgtAlldone;
