@@ -76,7 +76,7 @@ plainDialog.close();
               <select name="${t("FAVORITE-DEVELOPER")}">
                 <option value="">${t("CHOOSE-YOUR-FAVORITE")}...</option>
                 <option value="Jolle">Kevin</option>
-                <option value="Jolle">Evelina</option>
+                <option value="Jolle">Sandra</option>
                 <option value="Jolle">Staffan</option>
                 <option value="Matilda">Matilda</option>
               </select>
