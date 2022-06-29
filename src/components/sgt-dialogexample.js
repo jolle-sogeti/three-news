@@ -99,6 +99,16 @@ plainDialog.close();
         </div>
       </dialog>
 
+      <dialog id="slide-down-dialog" class="slide-down-dialog animated-slide-down-dialog">
+        <form method="dialog" id="slide-down-form">
+          <button class="close-x"></button>
+          <h3>${t("I-SLIDE-IN")}</h3>
+          <p>${t("SLIDE-IN-DIALOG-TXT")}</p>
+          <button class="ui secondary button">${t("I-SEE")}</button>
+        </form>
+      </dialog>
+
+
       <h2>&lt;dialog&gt;</h2>
       <p>
         <a href="#" id="alert-anchor">Alert</a>
@@ -116,6 +126,9 @@ plainDialog.close();
         </button>
         <button class="ui primary button" type="button" id="btn-form-dialog">
           ${t("OPEN-FORM-DIALOG")}
+        </button>
+        <button class="ui primary button" type="button" id="btn-slide-down-dialog">
+          ${t("ANIMATED")}
         </button>
         <button
           type="button"
@@ -213,6 +226,82 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
   100% {opacity:1;}
 }
 
+.slide-down-dialog {
+  background-color: #fff;
+  border: 1px solid gray;
+  box-shadow: 0 2px 7px 1px rgb(0 0 0 / 30%);
+  form {
+    display: flex;
+    margin-top: 1rem;
+    button {
+      margin: 0 auto;
+    }
+    .close-x {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      border-radius: 50%;
+      border: none;
+      padding: 4px 8px;
+      background-color: unset;
+      background-image: url("./assets/icons/close-cross.png");
+      background-size: 20px 20px;
+      background-origin: border-box;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.animated-slide-down-dialog {
+  margin: 0 auto;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  max-width: calc((100% - 6px) - 2em);
+  max-height: calc((100% - 6px) - 2em);
+  user-select: text;
+  overflow: auto;
+  z-index: 502;
+}
+
+.animated-slide-down-dialog[open] {
+  animation: show 1s ease normal;
+  -webkit-animation: show 1s ease normal;
+}
+@keyframes show {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@-webkit-keyframes show {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+.animated-slide-down-dialog.dialog-hide {
+  animation: hide 0.5s ease normal;
+  -webkit-animation: hide 0.5s ease normal;
+}
+@keyframes hide {
+  to {
+    transform: translateY(-110%);
+  }
+}
+@-webkit-keyframes hide {
+  to {
+    transform: translateY(-110%);
+  }
+}
+
 @media only screen and (max-width: 767px) {
 
   .btn-wrapper {
@@ -230,10 +319,15 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
     this.prePlainDialog = this.shadow.getElementById("pre-plain-dialog");
     this.styledDialog = this.shadow.getElementById("styled-dialog");
     this.formDialog = this.shadow.getElementById("form-dialog");
+    this.slideDownDialog = this.shadow.getElementById("slide-down-dialog");
+    this.slideDownDialogForm = this.shadow.getElementById("slide-down-form");
     this.dialogBtn = this.shadow.getElementById("btn-plain-dialog");
     this.modalDialogBtn = this.shadow.getElementById("btn-modal-dialog");
     this.styledDialogBtn = this.shadow.getElementById("btn-styled-dialog");
     this.formDialogBtn = this.shadow.getElementById("btn-form-dialog");
+    this.slideDownDialogBtn = this.shadow.getElementById(
+      "btn-slide-down-dialog"
+    );
     this.outputBox = this.shadow.querySelector("output");
     this.valuesBox = this.formDialog.querySelector("values");
 
@@ -292,6 +386,17 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
       this.styledDialogBtn.innerText = t("CLOSE-STYLED-DIALOG");
       this.styledDialog.showModal();
     });
+    this.slideDownDialogBtn.addEventListener("click", () => {
+      if (this.slideDownDialog.hasAttribute("open")) {
+        this.closeAnimated("slide-down-dialog");
+      } else {
+        this.slideDownDialog.show();
+      }
+    });
+    this.slideDownDialogForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.closeAnimated("slide-down-dialog");
+    });
 
     this.formDialogBtn.addEventListener("click", () => {
       const form = this.shadow.getElementById("dialog-form");
@@ -319,6 +424,19 @@ form p, #form-dialog .label, #form-dialog input, #form-dialog select {
         event.preventDefault();
         confirm(t("CHOOSE-BLUE-PIL-TXT"));
       });
+  }
+
+  closeAnimated(id) {
+    const dialog = this.shadow.getElementById(id);
+    console.log("closeAnimated", id, dialog);
+    const animationEnd = () => {
+      dialog.classList.remove("dialog-hide");
+      dialog.close();
+      dialog.removeEventListener("webkitAnimationEnd", animationEnd);
+    };
+
+    dialog.classList.add("dialog-hide");
+    dialog.addEventListener("webkitAnimationEnd", animationEnd);
   }
 
   serializeForm(form) {
